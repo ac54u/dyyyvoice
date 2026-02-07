@@ -5,11 +5,13 @@ FINALPACKAGE = 1
 
 TWEAK_NAME = DYYYVoice
 
-# 这里把两个文件都加进去了
 DYYYVoice_FILES = DYYYVoiceHook.xm DYYYVoiceUI.m
 
-# 强制使用 ARC (自动管理内存)
-DYYYVoice_CFLAGS = -fobjc-arc -w
+# 关键修改：加入了 -w (忽略所有警告) 和 -Wno-deprecated (忽略过时API报错)
+DYYYVoice_CFLAGS = -fobjc-arc -w -Wno-deprecated-declarations
+
+# 链接系统框架
+DYYYVoice_FRAMEWORKS = UIKit Foundation AVFoundation AudioToolbox CoreAudio
 
 INSTALL_TARGET_PROCESSES = Aweme
 
